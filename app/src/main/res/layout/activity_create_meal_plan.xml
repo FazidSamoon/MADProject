@@ -45,7 +45,7 @@
             android:paddingStart="20dp"/>
 
         <LinearLayout
-            android:id="@+id/double_inputs"
+            android:id="@+id/double_inputs_breakfast"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_below="@id/bfastinput"
@@ -73,7 +73,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@id/double_inputs"
+            android:layout_below="@id/double_inputs_breakfast"
             android:background="#40D9D9D9"
             android:layout_marginTop="10dp"
             android:hint="Food Discription"
@@ -91,7 +91,7 @@
         android:layout_marginEnd="30dp">
 
         <EditText
-            android:id="@+id/bfastinput"
+            android:id="@+id/lunchInput"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="#40D9D9D9"
@@ -102,10 +102,10 @@
             android:textColorHint="@color/white" />
 
         <LinearLayout
-            android:id="@+id/double_inputs"
+            android:id="@+id/double_inputs_lunch"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_below="@id/bfastinput"
+            android:layout_below="@id/lunchInput"
             android:layout_marginTop="10dp"
             android:weightSum="2">
             <EditText
@@ -130,7 +130,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@id/double_inputs"
+            android:layout_below="@id/double_inputs_lunch"
             android:background="#40D9D9D9"
             android:layout_marginTop="10dp"
             android:hint="Food Discription"
@@ -148,7 +148,7 @@
         android:layout_marginEnd="30dp">
 
         <EditText
-            android:id="@+id/bfastinput"
+            android:id="@+id/dinnerinput"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="#40D9D9D9"
@@ -162,7 +162,7 @@
             android:id="@+id/double_inputs"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_below="@id/bfastinput"
+            android:layout_below="@id/dinnerinput"
             android:layout_marginTop="10dp"
             android:weightSum="2">
 
