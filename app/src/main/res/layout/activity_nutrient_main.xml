@@ -116,7 +116,7 @@
                 android:textSize="16dp" />
 
             <ProgressBar
-                android:id="@+id/progressBar2"
+                android:id="@+id/progressBarProtein"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
@@ -146,7 +146,7 @@
                 android:textSize="16dp" />
 
             <ProgressBar
-                android:id="@+id/progressBar2"
+                android:id="@+id/progressBarCarbs"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
