@@ -21,4 +21,13 @@ public class Utilities {
         return firestore.collection("users").document(currentUser.getUid());
     }
 
+    static FirebaseUser getCurrentUser() {
+        return FirebaseAuth.getInstance().getCurrentUser();
+    }
+
+    static CollectionReference getPostCollectionReference() {
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        return firestore.collection("posts").document(getCurrentUser().getUid()).collection("my posts");
+    }
+
 }
