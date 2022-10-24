@@ -33,6 +33,7 @@
             android:layout_width="match_parent"
             android:padding="10dp"
             android:layout_height="50dp"
+            android:textColor="@color/white"
             android:background="#40C5B9B9"
             android:inputType="text"
             android:hint="@string/hint_form_create_post_input_title"
@@ -40,7 +41,7 @@
             android:drawableLeft="@drawable/ic_baseline_menu_book_24"
             android:drawablePadding="10dp"/>
 
-        <EditText
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/imageInputPost"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
@@ -59,6 +60,7 @@
             android:layout_width="match_parent"
             android:padding="10dp"
             android:layout_height="50dp"
+            android:textColor="@color/white"
             android:background="#40C5B9B9"
             android:inputType="text"
 
@@ -75,6 +77,7 @@
             android:layout_height="50dp"
             android:background="#40C5B9B9"
             android:drawableLeft="@drawable/bi_tag"
+            android:textColor="@color/white"
             android:drawablePadding="10dp"
             android:hint="@string/hint_form_create_post_input_tags"
             android:inputType="text"

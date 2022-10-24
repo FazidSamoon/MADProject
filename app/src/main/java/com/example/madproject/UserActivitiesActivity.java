@@ -2,7 +2,9 @@ package com.example.madproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,5 +31,19 @@ public class UserActivitiesActivity extends AppCompatActivity {
         likeText = findViewById(R.id.likesText);
         user = findViewById(R.id.username);
         timeStamp = findViewById(R.id.timeStamp);
+
+        newPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), CreatePostActivity.class));
+            }
+        });
+
+        newBlog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), CreateBlogActivity.class));
+            }
+        });
     }
 }

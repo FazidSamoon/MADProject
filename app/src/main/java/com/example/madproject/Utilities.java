@@ -25,9 +25,9 @@ public class Utilities {
         return FirebaseAuth.getInstance().getCurrentUser();
     }
 
-    static CollectionReference getPostCollectionReference() {
+    static DocumentReference getPostCollectionReference() {
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-        return firestore.collection("posts").document(getCurrentUser().getUid()).collection("my posts");
+        return firestore.collection("posts").document();
     }
 
 }
