@@ -145,7 +145,7 @@ public class CreatePostActivity extends AppCompatActivity {
         post.put("tags", tags.getText().toString());
         post.put("imageUrl", downloadUri);
         post.put("createdAt", date);
-        post.put("createdBy", Utilities.getCurrentUser().getUid());
+        post.put("createdBy", Utilities.getCurrentUser().getDisplayName());
 
 
         documentReference.set(post).addOnSuccessListener(new OnSuccessListener<Void>() {
