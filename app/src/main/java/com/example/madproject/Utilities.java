@@ -33,6 +33,11 @@ public class Utilities {
         return firestore.collection("posts").document();
     }
 
+    static DocumentReference getExistingCollectionReference(String docId) {
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        return firestore.collection("posts").document(docId);
+    }
+
     static String timeStampToString(Timestamp timestamp){
         return new SimpleDateFormat("mm/dd/yy").format(timestamp.toDate());
     }
