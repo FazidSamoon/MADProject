@@ -61,166 +61,19 @@
             android:layout_marginStart="5dp"/>
     </LinearLayout>
 
-
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_below="@id/buttonEdit"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/gray_bg"
-                android:padding="10dp">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonEdit"
+        android:id="@+id/postRecycle"
+        android:padding="20dp"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/icons"
-                    android:weightSum="3">
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
-                        <ImageView
-                            android:layout_marginStart="15dp"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/useravatar"/>
-                        <TextView
-                            android:id="@+id/username"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/text_explore_view_post_owner"
-                            android:textColor="@color/white"
-                            android:layout_marginStart="10dp"/>
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/bxtime"/>
-                        <TextView
-                            android:id="@+id/timeStamp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/text_explore_view_post_added"
-                            android:textColor="@color/white"
-                            android:layout_marginStart="10dp"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:gravity="center"
-                        android:padding="10dp">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/iconsmorehorizontal" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/imagebanner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/icons"
-                    android:layout_marginTop="10dp">
-                    <ImageView
-                        android:id="@+id/postImage"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/workout" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_below="@id/imagebanner"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:weightSum="3">
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:gravity="center">
-                        <ImageButton
-                            android:id="@+id/likeButton"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/likeoutlined" />
-                        <TextView
-                            android:id="@+id/likesText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/text_blog_view_likes"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"
-                            android:layout_marginTop="5dp" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:gravity="center">
-                        <ImageButton
-                            android:id="@+id/commentButton"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/comments" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/text_blog_view_comments"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"
-                            android:layout_marginTop="5dp" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:gravity="center">
-                        <ImageButton
-                            android:id="@+id/shareButton"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/share" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/text_blog_view_share"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"
-                            android:layout_marginTop="5dp" />
-                    </LinearLayout>
-
-                </LinearLayout>
-            </RelativeLayout>
-        </LinearLayout>
-    </ScrollView>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottomNavigationView"
+        android:layout_alignParentBottom="true"
+        android:background= "@drawable/container_bg"
+        app:menu="@menu/bottom_nav_menu"/>
 
 </RelativeLayout>

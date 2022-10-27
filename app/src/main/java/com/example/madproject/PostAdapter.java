@@ -1,14 +1,18 @@
 package com.example.madproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,9 +40,40 @@ public class PostAdapter extends FirestoreRecyclerAdapter<Post, PostAdapter.post
     protected void onBindViewHolder(@NonNull postViewHolder holder, int position, @NonNull Post model) {
         holder.title.setText(model.title);
         holder.description.setText(model.description);
-        holder.user.setText(model.createdBy);
+        if (model.createdBy.equals(Utilities.getCurrentUser().getUid().toString())) {
+            holder.button.setVisibility(View.VISIBLE);
+        }
+//        holder.user.setText(model.createdBy);
         new DownloadImageTask(holder.image)
                 .execute(model.imageUrl);
+
+        String docId = this.getSnapshots().getSnapshot(position).getId();
+        holder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu = new PopupMenu(context, holder.button);
+                popupMenu.getMenu().add("Edit");
+                popupMenu.show();
+
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        if (menuItem.getTitle().equals("Edit")) {
+                            Intent intent = new Intent(context, CreatePostActivity.class);
+                            intent.putExtra("title", model.title);
+                            intent.putExtra("description", model.description);
+                            intent.putExtra("imageUrl", model.imageUrl);
+                            intent.putExtra("tags", model.tags);
+                            intent.putExtra("docId", docId);
+                            context.startActivity(intent);
+                        }
+                        return false;
+                    }
+                });
+            }
+        });
+
+
     }
 
 
@@ -53,6 +88,7 @@ public class PostAdapter extends FirestoreRecyclerAdapter<Post, PostAdapter.post
     class postViewHolder extends RecyclerView.ViewHolder {
         TextView likeText, user, timeStamp, title, description;
         ImageView image;
+        ImageButton button;
 
         public postViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -62,6 +98,8 @@ public class PostAdapter extends FirestoreRecyclerAdapter<Post, PostAdapter.post
             timeStamp = itemView.findViewById(R.id.timeStamp);
             title = itemView.findViewById(R.id.titlePost);
             description = itemView.findViewById(R.id.descPost);
+            button = itemView.findViewById(R.id.moreButton);
+
         }
 
     }

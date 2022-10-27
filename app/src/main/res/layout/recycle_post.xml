@@ -60,9 +60,11 @@
             android:gravity="center"
             android:padding="10dp">
 
-            <ImageView
+            <ImageButton
+                android:id="@+id/moreButton"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
+                android:visibility="gone"
                 android:src="@drawable/iconsmorehorizontal" />
         </LinearLayout>
     </LinearLayout>

@@ -5,18 +5,16 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.view.MenuItem;
 import android.view.View;
-import android.webkit.MimeTypeMap;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.Continuation;
@@ -24,10 +22,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
-import com.google.firebase.firestore.CollectionReference;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -41,9 +39,14 @@ import java.util.Map;
 
 public class CreatePostActivity extends AppCompatActivity {
     EditText title, description, tags;
-    MaterialButton button, image;
+    MaterialButton button, image, deleteButton;
     Uri imageUri, downloadUri;
     StorageReference storageReference;
+    String titleIntent, descriptionIntent, picIntent, tagsIntent, docIdIntent;
+    boolean isEditMode = false;
+    DocumentReference documentReference;
+    TextView heading;
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,13 +58,69 @@ public class CreatePostActivity extends AppCompatActivity {
         tags = findViewById(R.id.tagsInputPost);
         image = findViewById(R.id.imageInputPost);
         button = findViewById(R.id.createPostButton);
+        deleteButton = findViewById(R.id.button_delete);
+        heading = findViewById(R.id.heading);
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
+
+        //getIntents
+        titleIntent = getIntent().getStringExtra("title");
+        descriptionIntent = getIntent().getStringExtra("description");
+        picIntent = getIntent().getStringExtra("imageUrl");
+        tagsIntent = getIntent().getStringExtra("tags");
+        docIdIntent = getIntent().getStringExtra("docId");
+
+
+        if (docIdIntent != null && !docIdIntent.isEmpty()) {
+            isEditMode = true;
+            heading.setText("Edit Post");
+            deleteButton.setVisibility(View.VISIBLE);
+        }
+
+        if (isEditMode) {
+            description.setText(descriptionIntent);
+            title.setText(titleIntent);
+            tags.setText(tagsIntent);
+        }
 
         //selecting images
         image.setOnClickListener((v) -> selectImage());
 
         //uploading post
         button.setOnClickListener((v) -> uploadPost());
+        
+        deleteButton.setOnClickListener((v) -> deletePost(docIdIntent));
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.home: startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        return true;
+                    case R.id.explore: startActivity(new Intent(getApplicationContext(), ExploreVIewActivity.class));
+                        return true;
+                    case R.id.blog: startActivity(new Intent(getApplicationContext(), BlogActivity.class));
+                        return true;
+                    case R.id.settings: startActivity(new Intent(getApplicationContext(), UserProfileActivity.class));
+                        return true;
+                }
+                return false;
+            }
+        });
+    }
+
+    private void deletePost(String docIdIntent) {
+        Utilities.getExistingCollectionReference(docIdIntent).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Utilities.createToast(getApplicationContext(), "Note deleted successfully");
+                    startActivity(new Intent(getApplicationContext(), UserActivitiesActivity.class));
+                    finish();
+                } else {
+                    Utilities.createToast(getApplicationContext(), "Failed while deleting");
+                }
+            }
+        });
     }
 
     //select image function
@@ -136,7 +195,13 @@ public class CreatePostActivity extends AppCompatActivity {
 
     //upload post function
     private void uploadPost() {
-        DocumentReference documentReference = Utilities.getPostCollectionReference();
+
+        if (isEditMode) {
+            documentReference = Utilities.getExistingCollectionReference(docIdIntent);
+        } else {
+            documentReference = Utilities.getPostCollectionReference();
+        }
+
         Map<String, Object> post = new HashMap<>();
         Date date = new Date();
 
@@ -145,7 +210,7 @@ public class CreatePostActivity extends AppCompatActivity {
         post.put("tags", tags.getText().toString());
         post.put("imageUrl", downloadUri);
         post.put("createdAt", date);
-        post.put("createdBy", Utilities.getCurrentUser().getDisplayName());
+        post.put("createdBy", Utilities.getCurrentUser().getUid());
 
 
         documentReference.set(post).addOnSuccessListener(new OnSuccessListener<Void>() {

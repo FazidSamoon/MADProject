@@ -5,13 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -57,5 +60,25 @@ public class UserProfileActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), UserActivitiesActivity.class));
             }
         });
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.home: startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        return true;
+                    case R.id.explore: startActivity(new Intent(getApplicationContext(), ExploreVIewActivity.class));
+                        return true;
+                    case R.id.blog: startActivity(new Intent(getApplicationContext(), BlogActivity.class));
+                        return true;
+                    case R.id.settings: startActivity(new Intent(getApplicationContext(), UserProfileActivity.class));
+                        return true;
+                }
+                return false;
+            }
+        });
+
     }
 }
