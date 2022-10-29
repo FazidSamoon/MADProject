@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -22,7 +23,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -54,6 +57,28 @@ public class CreateBlogActivity extends AppCompatActivity {
 
         image.setOnClickListener((v) -> selectImage());
         button.setOnClickListener((v) -> createBlog());
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.home: startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        return true;
+                    case R.id.explore: startActivity(new Intent(getApplicationContext(), ExploreVIewActivity.class));
+                        return true;
+                    case R.id.blog: startActivity(new Intent(getApplicationContext(), BlogActivity.class));
+                        return true;
+                    case R.id.settings: startActivity(new Intent(getApplicationContext(), UserProfileActivity.class));
+                        return true;
+                }
+                return false;
+
+            }
+        });
+
     }
 
 
@@ -147,38 +172,20 @@ public class CreateBlogActivity extends AppCompatActivity {
         saveBlogToFirebase(blog);
     }
 
-    public void saveBlogToFirebase(Blog blog){
+    public void saveBlogToFirebase(Blog blog) {
         DocumentReference documentReference;
         documentReference = Utility.getCollectionReferenceForNotes().document();
 
         documentReference.set(blog).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
                     Utility.showToast(CreateBlogActivity.this, "Blog added successfully");
                     finish();
-                }else {
+                } else {
                     Utility.showToast(CreateBlogActivity.this, "Blog cannot be added");
 
                 }
-
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
-
-
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.home: startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        return true;
-                    case R.id.explore: startActivity(new Intent(getApplicationContext(), ExploreVIewActivity.class));
-                        return true;
-                    case R.id.blog: startActivity(new Intent(getApplicationContext(), BlogActivity.class));
-                        return true;
-                    case R.id.settings: startActivity(new Intent(getApplicationContext(), UserProfileActivity.class));
-                        return true;
-                }
-                return false;
 
             }
         });

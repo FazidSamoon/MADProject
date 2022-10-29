@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -217,13 +218,16 @@ public class EditBlogActivity extends AppCompatActivity {
         documentReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
                     Utility.showToast(EditBlogActivity.this, "Note is deleted");
                     finish();
-                }else {
+                } else {
                     Utility.showToast(EditBlogActivity.this, "Failed to delete");
 
                 }
-
+            }
+            });
     }
+
+
 }
