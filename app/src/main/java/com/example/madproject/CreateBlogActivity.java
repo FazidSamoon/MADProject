@@ -7,12 +7,15 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
+
 
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,6 +39,7 @@ public class CreateBlogActivity extends AppCompatActivity {
     Uri imageUri, downloadUri;
     StorageReference storageReference;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +50,7 @@ public class CreateBlogActivity extends AppCompatActivity {
         tags = findViewById(R.id.blogTagsInput);
         image = findViewById(R.id.blogImageInput);
         button = findViewById(R.id.createBLogButton);
+
 
         image.setOnClickListener((v) -> selectImage());
         button.setOnClickListener((v) -> createBlog());
@@ -156,6 +161,25 @@ public class CreateBlogActivity extends AppCompatActivity {
                     Utility.showToast(CreateBlogActivity.this, "Blog cannot be added");
 
                 }
+
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.home: startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        return true;
+                    case R.id.explore: startActivity(new Intent(getApplicationContext(), ExploreVIewActivity.class));
+                        return true;
+                    case R.id.blog: startActivity(new Intent(getApplicationContext(), BlogActivity.class));
+                        return true;
+                    case R.id.settings: startActivity(new Intent(getApplicationContext(), UserProfileActivity.class));
+                        return true;
+                }
+                return false;
+
             }
         });
     }

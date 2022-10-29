@@ -7,6 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -29,7 +30,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+
 public class EditBlogActivity extends AppCompatActivity {
+
 
     EditText title, content, tags;
     MaterialButton updateButton, deleteButton, imageButton;
@@ -41,6 +47,7 @@ public class EditBlogActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_blog);
+
 
         title= findViewById(R.id.edit_title);
         content = findViewById(R.id.edit_description);
@@ -63,6 +70,28 @@ public class EditBlogActivity extends AppCompatActivity {
         imageButton.setOnClickListener((v) -> selectImage());
         updateButton.setOnClickListener((v) -> editBlog());
         deleteButton.setOnClickListener((v) -> deleteBlogFromFirebase());
+        
+        
+                BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.home: startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        return true;
+                    case R.id.explore: startActivity(new Intent(getApplicationContext(), ExploreVIewActivity.class));
+                        return true;
+                    case R.id.blog: startActivity(new Intent(getApplicationContext(), BlogActivity.class));
+                        return true;
+                    case R.id.settings: startActivity(new Intent(getApplicationContext(), UserProfileActivity.class));
+                        return true;
+                }
+                return false;
+
+            }
+        });
+        
     }
 
 
@@ -195,7 +224,6 @@ public class EditBlogActivity extends AppCompatActivity {
                     Utility.showToast(EditBlogActivity.this, "Failed to delete");
 
                 }
-            }
-        });
+
     }
 }
