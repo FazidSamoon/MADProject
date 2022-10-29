@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WaterConsumptionActivity"
+    android:background="@color/black">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/heading1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/icons"
+            android:weightSum="3">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:padding="25dp">
+
+            <ImageView
+                android:layout_marginStart="15dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/watericon"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/userName"
+                android:layout_height="wrap_content"
+                android:text="Do you know that 3L of water  daily for your healthy diet ?"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="italic"
+                android:layout_marginStart="10dp"/>
+
+        </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tips"
+        android:layout_below="@id/heading1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Usefull Tips!!"
+                    android:textColor="@color/yellow"
+                    android:textSize="25dp"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:paddingBottom="10dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="carrying nutrients to your cells"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="18dp"
+                    android:layout_marginTop="10dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="flushing bacteria from your bladder."
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="18dp"
+                    android:layout_marginTop="10dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="cushioning joints of our body"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="18dp"
+                    android:layout_marginTop="10dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="protecting organs and tissues"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="18dp"
+                    android:layout_marginTop="10dp"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/details"
+        android:layout_below="@id/tips"
+        android:layout_marginTop="65dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_marginStart="15dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_baseline_done_24"
+                    android:layout_marginLeft="15dp"/>
+
+                <TextView
+                    android:id="@+id/selectA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select your cup"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="10dp"
+                    android:paddingLeft="15dp"
+                    android:textSize="18dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_marginStart="15dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_baseline_done_24"
+                    android:layout_marginLeft="15dp"/>
+
+                <TextView
+                    android:id="@+id/createA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Add your goals"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="10dp"
+                    android:paddingLeft="15dp"
+                    android:textSize="18dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_marginStart="15dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_baseline_done_24"
+                    android:layout_marginLeft="15dp"/>
+
+                <TextView
+                    android:id="@+id/mygoalsA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="My goals"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="10dp"
+                    android:paddingLeft="15dp"
+                    android:textSize="18dp"
+                    />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>

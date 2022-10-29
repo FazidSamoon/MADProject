@@ -4,56 +4,52 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.Query;
 
-public class BlogActivity extends AppCompatActivity {
+public class DisplayWaterGoal extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    BlogAdapter blogAdapter;
+    WaterAdapter waterAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_blog);
+        setContentView(R.layout.activity_display_water_goal);
 
-        recyclerView = findViewById(R.id.recycler_view);
+        recyclerView = findViewById(R.id.recycler_view_water);
         setupRecyclerView();
-
     }
 
     public void setupRecyclerView(){
-        Query query = Utility.getCollectionReferenceForNotes().orderBy("date", Query.Direction.DESCENDING);
-        FirestoreRecyclerOptions<Blog> options = new FirestoreRecyclerOptions.Builder<Blog>()
-                .setQuery(query,Blog.class).build();
+        Query query = Utility.getCollectionReferenceForWater().orderBy("date", Query.Direction.ASCENDING).limitToLast(1);
+        FirestoreRecyclerOptions<WaterGoal> options = new FirestoreRecyclerOptions.Builder<WaterGoal>()
+                .setQuery(query,WaterGoal.class).build();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        blogAdapter = new BlogAdapter(options,this);
-        recyclerView.setAdapter(blogAdapter);
+        waterAdapter = new WaterAdapter(options,this);
+        recyclerView.setAdapter(waterAdapter);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        blogAdapter.startListening();
+        waterAdapter.startListening();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        blogAdapter.stopListening();
+        waterAdapter.stopListening();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        blogAdapter.notifyDataSetChanged();
+        waterAdapter.notifyDataSetChanged();
     }
-
 
 }
