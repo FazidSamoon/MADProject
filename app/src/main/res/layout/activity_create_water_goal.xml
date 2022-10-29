@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateWaterGoalActivity"
+    android:background="@color/black">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/top1">
+
+        <TextView
+            android:id="@+id/heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add your daily goal"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:textAlignment="center"
+            android:layout_marginTop="100dp"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:id="@+id/waterDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/heading"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="60dp">
+
+            <EditText
+                android:id="@+id/waterTarget"
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:layout_height="50dp"
+                android:background="#40C5B9B9"
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:hint="Enter daily water target"
+                android:textColorHint="@color/white"
+                android:drawableLeft="@drawable/ic_baseline_done_24"
+                android:drawablePadding="10dp"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/waterDetails"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="60dp">
+
+            <EditText
+                android:id="@+id/dailyMode"
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:layout_height="50dp"
+                android:background="#40C5B9B9"
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:hint="Enter your daily mode"
+                android:textColorHint="@color/white"
+                android:drawableLeft="@drawable/file"
+                android:drawablePadding="10dp"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/completed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/mode"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="60dp">
+
+            <EditText
+                android:id="@+id/targetCompleted"
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:layout_height="50dp"
+                android:background="#40C5B9B9"
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:hint="Did you completed your last target"
+                android:textColorHint="@color/white"
+                android:drawableLeft="@drawable/ic_baseline_done_24"
+                android:drawablePadding="10dp"/>
+
+
+        </LinearLayout>
+
+
+
+
+
+    </RelativeLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/top1"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/primary_button"
+        android:text="Add goal"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:id="@+id/goal_submit"/>
+
+</RelativeLayout>
