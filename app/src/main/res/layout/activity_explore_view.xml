@@ -35,4 +35,5 @@
         android:background= "@drawable/container_bg"
         app:menu="@menu/bottom_nav_menu"/>
 
+
 </RelativeLayout>

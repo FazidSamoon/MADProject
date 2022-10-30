@@ -25,14 +25,17 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -204,6 +207,7 @@ public class CreatePostActivity extends AppCompatActivity {
 
         Map<String, Object> post = new HashMap<>();
         Date date = new Date();
+        List<FirebaseUser> list = new ArrayList<>();
 
         post.put("title", title.getText().toString());
         post.put("description", description.getText().toString());
@@ -211,6 +215,7 @@ public class CreatePostActivity extends AppCompatActivity {
         post.put("imageUrl", downloadUri);
         post.put("createdAt", date);
         post.put("createdBy", Utilities.getCurrentUser().getUid());
+        post.put("likes", list);
 
 
         documentReference.set(post).addOnSuccessListener(new OnSuccessListener<Void>() {

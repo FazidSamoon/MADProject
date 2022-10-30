@@ -3,6 +3,10 @@ package com.example.madproject;
 import android.net.Uri;
 
 import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseUser;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Post {
     Timestamp createdAt;
@@ -11,6 +15,15 @@ public class Post {
     String imageUrl;
     String tags;
     String title;
+    List<String> list = new ArrayList<>();
+
+    public List<String> getList() {
+        return list;
+    }
+
+    public void setList(List<String> list) {
+        this.list = list;
+    }
 
     public Post() {}
 
