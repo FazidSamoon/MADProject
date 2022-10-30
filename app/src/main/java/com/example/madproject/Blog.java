@@ -8,6 +8,7 @@ public class Blog {
     String content;
     String tags;
     String image;
+    String blogUser;
     Date date;
 
 
@@ -52,5 +53,13 @@ public class Blog {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getBlogUser() {
+        return blogUser;
+    }
+
+    public void setBlogUser(String blogUser) {
+        this.blogUser = blogUser;
     }
 }

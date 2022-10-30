@@ -65,7 +65,7 @@ public class UserBlogActivity extends AppCompatActivity {
 
 
     public void setupRecyclerView(){
-        Query query = Utility.getCollectionReferenceForNotes().orderBy("title", Query.Direction.DESCENDING);
+        Query query = Utility.getCollectionReferenceForNotes().orderBy("date", Query.Direction.DESCENDING);
         FirestoreRecyclerOptions<Blog> options = new FirestoreRecyclerOptions.Builder<Blog>()
                 .setQuery(query,Blog.class).build();
 

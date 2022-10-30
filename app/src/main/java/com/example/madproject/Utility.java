@@ -22,11 +22,12 @@ public class Utility {
     }
 
     static CollectionReference getCollectionReferenceForWater(){
-//        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        return FirebaseFirestore.getInstance().collection("WaterGoals");
-//                .document(currentUser.getUid()).collection("my_notes");
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        return FirebaseFirestore.getInstance().collection("WaterGoals")
+                .document(currentUser.getUid()).collection("my_water_goals");
 
     }
+
 
     static CollectionReference getCollectionReferenceForUserBlogs(){
 //        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -35,11 +36,16 @@ public class Utility {
 
     }
 
-    static CollectionReference getCollectionReferenceForGlass(){
-//        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        return FirebaseFirestore.getInstance().collection("Glass");
-//                .document(currentUser.getUid()).collection("my_notes");
 
+    static CollectionReference getCollectionReferenceForGlass(){
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        return FirebaseFirestore.getInstance().collection("Glass")
+                .document(currentUser.getUid()).collection("my_glass_plans");
+
+    }
+
+    static FirebaseUser getCurrentUser() {
+        return FirebaseAuth.getInstance().getCurrentUser();
     }
 
 
