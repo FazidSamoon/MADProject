@@ -20,12 +20,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.DocumentReference;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PostAdapter extends FirestoreRecyclerAdapter<Post, PostAdapter.postViewHolder> {
     Context context;
@@ -74,7 +77,36 @@ public class PostAdapter extends FirestoreRecyclerAdapter<Post, PostAdapter.post
         });
 
 
+        holder.likeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Map<String, Object> post = new HashMap<>();
+                DocumentReference documentReference = Utilities.getExistingCollectionReference(docId);
+
+                if (!model.likes.isEmpty()) {
+                    if (model.likes.contains(Utilities.getCurrentUser().getUid())) {
+                        model.likes.remove(Utilities.getCurrentUser().getUid());
+
+                        post.put("likes", model.likes);
+                    } else {
+                        model.likes.add(Utilities.getCurrentUser().getUid());
+                        post.put("likes", model.likes);
+                    }
+                } else {
+                    model.likes.add(Utilities.getCurrentUser().getUid());
+                    post.put("likes", model.likes);
+                }
+
+
+                documentReference.update(post);
+            }
+        });
+
+        System.out.println("ssss" +model.likes);
+        DocumentReference documentReference = Utilities.getExistingCollectionReference(docId);
+        holder.likeText.setText(model.likes.size() + " likes");
     }
+
 
 
     @NonNull
@@ -88,7 +120,7 @@ public class PostAdapter extends FirestoreRecyclerAdapter<Post, PostAdapter.post
     class postViewHolder extends RecyclerView.ViewHolder {
         TextView likeText, user, timeStamp, title, description;
         ImageView image;
-        ImageButton button;
+        ImageButton button, likeButton;
 
         public postViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -99,7 +131,7 @@ public class PostAdapter extends FirestoreRecyclerAdapter<Post, PostAdapter.post
             title = itemView.findViewById(R.id.titlePost);
             description = itemView.findViewById(R.id.descPost);
             button = itemView.findViewById(R.id.moreButton);
-
+            likeButton = itemView.findViewById(R.id.likeButton);
         }
 
     }
