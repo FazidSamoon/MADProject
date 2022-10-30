@@ -34,4 +34,13 @@
         android:textColor="@color/white"
         android:text="@string/title_loading_screen_button" />
 
+    <ProgressBar
+        android:layout_below="@id/getStartedButton"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        android:id="@+id/progressBar3"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </RelativeLayout>
