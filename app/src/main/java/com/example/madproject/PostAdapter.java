@@ -105,6 +105,7 @@ public class PostAdapter extends FirestoreRecyclerAdapter<Post, PostAdapter.post
         System.out.println("ssss" +model.likes);
         DocumentReference documentReference = Utilities.getExistingCollectionReference(docId);
         holder.likeText.setText(model.likes.size() + " likes");
+
     }
 
 

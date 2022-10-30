@@ -60,7 +60,8 @@
                 android:background="#40D9D9D9"
                 android:paddingStart="20dp"
                 android:text="@string/meal_hint_food_type"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:id="@+id/Bf_type_input"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -70,7 +71,8 @@
                 android:background="#40D9D9D9"
                 android:paddingStart="20dp"
                 android:text="@string/meal_hint_food_quantity"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:id="@+id/Bf_quantity_input"/>
         </LinearLayout>
 
         <EditText
@@ -81,19 +83,20 @@
             android:background="#40D9D9D9"
             android:hint="@string/meal_hint_description"
             android:paddingStart="20dp"
-            android:textColorHint="@color/white" />
+            android:textColorHint="@color/white"
+            android:id="@+id/Bf_des"/>
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/lunchField"
+        android:layout_below="@id/breakfast_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/breakfast_field"
-        android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
+        android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp">
 
-        <EditText
+        <TextView
             android:id="@+id/lunchInput"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -102,7 +105,9 @@
             android:drawablePadding="10dp"
             android:hint="@string/meal_hint_lunch"
             android:paddingStart="20dp"
-            android:textColorHint="@color/white" />
+            android:textColorHint="@color/white"
+            android:textSize="20sp"
+            android:gravity="center_vertical"/>
 
         <LinearLayout
             android:id="@+id/double_inputs_lunch"
@@ -120,7 +125,8 @@
                 android:background="#40D9D9D9"
                 android:paddingStart="20dp"
                 android:text="@string/meal_hint_food_type"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:id="@+id/Lu_type"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -130,7 +136,8 @@
                 android:background="#40D9D9D9"
                 android:paddingStart="20dp"
                 android:text="@string/meal_hint_food_quantity"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:id="@+id/Lu_quantity"/>
         </LinearLayout>
 
         <EditText
@@ -141,7 +148,8 @@
             android:background="#40D9D9D9"
             android:hint="@string/meal_hint_description"
             android:paddingStart="20dp"
-            android:textColorHint="@color/white" />
+            android:textColorHint="@color/white"
+            android:id="@+id/Lu_des"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -153,7 +161,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp">
 
-        <EditText
+        <TextView
             android:id="@+id/dinnerInput"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -162,7 +170,9 @@
             android:drawablePadding="10dp"
             android:hint="@string/meal_hint_dinner"
             android:paddingStart="20dp"
-            android:textColorHint="@color/white" />
+            android:textColorHint="@color/white"
+            android:textSize="20sp"
+            android:gravity="center_vertical"/>
 
         <LinearLayout
             android:id="@+id/double_inputs_dinner"
@@ -180,7 +190,8 @@
                 android:background="#40D9D9D9"
                 android:paddingStart="20dp"
                 android:text="@string/meal_hint_food_type"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:id="@+id/Din_type"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -190,7 +201,8 @@
                 android:background="#40D9D9D9"
                 android:paddingStart="20dp"
                 android:text="@string/meal_hint_food_quantity"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:id="@+id/Din_quantity"/>
         </LinearLayout>
 
         <EditText
@@ -201,7 +213,9 @@
             android:background="#40D9D9D9"
             android:hint="@string/meal_hint_description"
             android:paddingStart="20dp"
-            android:textColorHint="@color/white" />
+            android:textColorHint="@color/white"
+            android:id="@+id/Din_des"/>
+
     </RelativeLayout>
 
     <com.google.android.material.button.MaterialButton

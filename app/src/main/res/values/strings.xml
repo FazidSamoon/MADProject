@@ -123,6 +123,7 @@
     <string name="meal_main_heading">Nutrients</string>
     <string name="meal_cal_consumed">Kcal consumed</string>
     <string name="meal_protein">Proteins</string>
+    <string name="meal_create_plan">Create Plan</string>
     <string name="meal_carbs">Carbs</string>
     <string name="meal_fats">Fats</string>
 

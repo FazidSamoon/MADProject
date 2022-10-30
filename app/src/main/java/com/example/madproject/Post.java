@@ -15,6 +15,7 @@ public class Post {
     String imageUrl;
     String tags;
     String title;
+
     List<String> likes = new ArrayList<>();
 
     public List<String> getList() {
