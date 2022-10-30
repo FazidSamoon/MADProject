@@ -83,18 +83,18 @@ public class PostAdapter extends FirestoreRecyclerAdapter<Post, PostAdapter.post
                 Map<String, Object> post = new HashMap<>();
                 DocumentReference documentReference = Utilities.getExistingCollectionReference(docId);
 
-                if (!model.list.isEmpty()) {
-                    if (model.list.contains(Utilities.getCurrentUser().getUid())) {
-                        model.list.remove(Utilities.getCurrentUser().getUid());
+                if (!model.likes.isEmpty()) {
+                    if (model.likes.contains(Utilities.getCurrentUser().getUid())) {
+                        model.likes.remove(Utilities.getCurrentUser().getUid());
 
-                        post.put("likes", model.list);
+                        post.put("likes", model.likes);
                     } else {
-                        model.list.add(Utilities.getCurrentUser().getUid());
-                        post.put("likes", model.list);
+                        model.likes.add(Utilities.getCurrentUser().getUid());
+                        post.put("likes", model.likes);
                     }
                 } else {
-                    model.list.add(Utilities.getCurrentUser().getUid());
-                    post.put("likes", model.list);
+                    model.likes.add(Utilities.getCurrentUser().getUid());
+                    post.put("likes", model.likes);
                 }
 
 
@@ -102,15 +102,10 @@ public class PostAdapter extends FirestoreRecyclerAdapter<Post, PostAdapter.post
             }
         });
 
-//        if (!model.list.isEmpty()) {
-//            holder.likeText.setText(model.list.size() + " likes");
-//        } else {
-//            holder.likeText.setText("like");
-//
-//        }
+        System.out.println("ssss" +model.likes);
+        DocumentReference documentReference = Utilities.getExistingCollectionReference(docId);
+        holder.likeText.setText(model.likes.size() + " likes");
 
-        System.out.println("ssss" +model.list);
-        holder.likeText.setText(model.list.size() + " likes");
     }
 
 

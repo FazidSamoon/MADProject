@@ -15,14 +15,15 @@ public class Post {
     String imageUrl;
     String tags;
     String title;
-    List<String> list = new ArrayList<>();
+
+    List<String> likes = new ArrayList<>();
 
     public List<String> getList() {
-        return list;
+        return likes;
     }
 
     public void setList(List<String> list) {
-        this.list = list;
+        this.likes = list;
     }
 
     public Post() {}
