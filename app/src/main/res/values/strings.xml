@@ -106,7 +106,9 @@
     <string name="meal_hint_breakfast">Your breakfast plan</string>
     <string name="meal_hint_lunch">Your lunch plan</string>
     <string name="meal_hint_dinner">Your dinner plan</string>
-    <string name="meal_hint_snacks">Any snacks ?</string>
+    <string name="meal_hint_description">Description</string>
+    <string name="meal_hint_food_type">Food type</string>
+    <string name="meal_hint_food_quantity">quantity</string>
     <string name="meal_hint_duration">Duration</string>
     <string name="meal_button_create_plan">Create My Plan</string>
     <string name="meal_heading_breakfast">Breakfast plans</string>

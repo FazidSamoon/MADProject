@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    tools:context=".BmiLandingActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50sp"
+            android:text="@string/BMI_title"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="200sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="70sp"
+            android:background="@drawable/bmi_circle">
+
+            <ImageView
+                android:layout_width="200sp"
+                android:layout_height="200sp"
+                android:layout_gravity="center"
+                android:src="@drawable/bmi_icon" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/BmiFactsLink"
+            android:layout_width="250sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100sp"
+            android:drawablePadding="10sp"
+            android:gravity="center"
+            android:text="@string/BMI_link_to_facts"
+            android:textColor="@color/white"
+            android:textSize="27sp"
+            app:drawableLeftCompat="@drawable/doubleticks" />
+
+        <TextView
+            android:id="@+id/BmiCalculatorLink"
+            android:layout_width="250sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50sp"
+            android:gravity="center"
+            android:text="@string/BMI_link_to_calculate"
+            android:textColor="@color/white"
+            android:textSize="27sp"
+            app:drawableLeftCompat="@drawable/useravatar" />
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/container_bg"
+        app:menu="@menu/bottom_nav_menu" />
+</RelativeLayout>
