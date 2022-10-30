@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,6 +39,8 @@ public class BlogAdapter extends FirestoreRecyclerAdapter<Blog, BlogAdapter.Blog
                 .execute(blog.image);
 
         String docId = this.getSnapshots().getSnapshot(position).getId();
+        String currentUserID = Utilities.getCurrentUser().getUid();
+
         holder.popup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,13 +51,19 @@ public class BlogAdapter extends FirestoreRecyclerAdapter<Blog, BlogAdapter.Blog
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         if(menuItem.getTitle() == "Edit"){
+                            if(blog.blogUser.equals(currentUserID)) {
                                 Intent intent = new Intent(context, EditBlogActivity.class);
                                 intent.putExtra("title", blog.title);
-                                intent.putExtra("content",blog.content);
-                                intent.putExtra("image",blog.image);
-                                intent.putExtra("tags",blog.tags);
+                                intent.putExtra("content", blog.content);
+                                intent.putExtra("image", blog.image);
+                                intent.putExtra("tags", blog.tags);
                                 intent.putExtra("docId", docId);
                                 context.startActivity(intent);
+                            }
+                            else{
+
+                                //
+                            }
                         }
                         return false;
                     }

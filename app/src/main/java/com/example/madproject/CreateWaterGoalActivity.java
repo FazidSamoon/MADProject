@@ -6,12 +6,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.EditText;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.firestore.DocumentReference;
 
 import java.util.Date;
@@ -32,6 +36,7 @@ public class CreateWaterGoalActivity extends AppCompatActivity {
         submitBtn = findViewById(R.id.goal_submit);
 
         submitBtn.setOnClickListener((v) -> crateGoal());
+
 
     }
 

@@ -185,6 +185,7 @@ public class EditBlogActivity extends AppCompatActivity {
         blog.setImage(blogImage);
         blog.setTags(blogTag);
         blog.setDate(date);
+        blog.setBlogUser(Utilities.getCurrentUser().getUid());
 
         saveBlogToFirebase(blog);
     }
