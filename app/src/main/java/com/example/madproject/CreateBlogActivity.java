@@ -182,7 +182,8 @@ public class CreateBlogActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
                     Utility.showToast(CreateBlogActivity.this, "Blog added successfully");
-                    finish();
+                    startActivity(new Intent(getApplicationContext(), BlogActivity.class));
+//                    finish();
                 } else {
                     Utility.showToast(CreateBlogActivity.this, "Blog cannot be added");
 
