@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.material.button.MaterialButton;
 
 public class WaterAdapter extends FirestoreRecyclerAdapter<WaterGoal, WaterAdapter.WaterViewHolder> {
 
@@ -28,17 +29,32 @@ public class WaterAdapter extends FirestoreRecyclerAdapter<WaterGoal, WaterAdapt
         holder.dailyMod.setText(waterGoal.dailyMode);
         holder.lastCom.setText(waterGoal.completed);
 
-
-        holder.itemView.setOnClickListener((v) -> {
-            Intent intent = new Intent(context, EditWaterConsumptionActivity.class);
+        String docId = this.getSnapshots().getSnapshot(position).getId();
+        holder.update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, EditWaterConsumptionActivity.class);
             intent.putExtra("waterGoal", waterGoal.waterGoal);
             intent.putExtra("dailyMode",waterGoal.dailyMode);
             intent.putExtra("completed",waterGoal.completed);
 
-            String docId = this.getSnapshots().getSnapshot(position).getId();
             intent.putExtra("docId", docId);
             context.startActivity(intent);
+            }
         });
+
+
+
+//        holder.itemView.setOnClickListener((v) -> {
+//            Intent intent = new Intent(context, EditWaterConsumptionActivity.class);
+//            intent.putExtra("waterGoal", waterGoal.waterGoal);
+//            intent.putExtra("dailyMode",waterGoal.dailyMode);
+//            intent.putExtra("completed",waterGoal.completed);
+//
+//            String docId = this.getSnapshots().getSnapshot(position).getId();
+//            intent.putExtra("docId", docId);
+//            context.startActivity(intent);
+//        });
     }
 
     @NonNull
@@ -52,6 +68,7 @@ public class WaterAdapter extends FirestoreRecyclerAdapter<WaterGoal, WaterAdapt
     class WaterViewHolder extends RecyclerView.ViewHolder{
 
         TextView dailyTar, dailyMod ,lastCom;
+        MaterialButton update;
 
         public WaterViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -59,6 +76,7 @@ public class WaterAdapter extends FirestoreRecyclerAdapter<WaterGoal, WaterAdapt
             dailyTar = itemView.findViewById(R.id.water_view);
             dailyMod = itemView.findViewById(R.id.daily_view);
             lastCom = itemView.findViewById(R.id.complete_view);
+            update = itemView.findViewById(R.id.button_update_water1);
 
         }
     }

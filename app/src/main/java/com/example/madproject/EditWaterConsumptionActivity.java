@@ -66,7 +66,7 @@ public class EditWaterConsumptionActivity extends AppCompatActivity {
 
     public void saveGoalToFirebase(WaterGoal waterGoal){
         DocumentReference documentReference;
-        documentReference = Utility.getCollectionReferenceForWater().document();
+        documentReference = Utility.getCollectionReferenceForWater().document(docId);
 
         documentReference.set(waterGoal).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
