@@ -41,5 +41,9 @@ public class Utilities {
     static String timeStampToString(Timestamp timestamp){
         return new SimpleDateFormat("mm/dd/yy").format(timestamp.toDate());
     }
+    static CollectionReference CollectionReferenceForMeals(){
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        return FirebaseFirestore.getInstance().collection("Meals").document(currentUser.getUid()).collection("my_meals");
+    }
 
 }
