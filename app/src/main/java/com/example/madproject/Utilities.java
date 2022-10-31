@@ -43,7 +43,15 @@ public class Utilities {
     }
     static CollectionReference CollectionReferenceForMeals(){
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        return FirebaseFirestore.getInstance().collection("Meals").document(currentUser.getUid()).collection("my_meals");
+        return FirebaseFirestore.getInstance().collection("Meals").document(getCurrentUser().getUid()).collection("my_meals");
+    }
+    static DocumentReference DocumentReferenceForMeals(){
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        return FirebaseFirestore.getInstance().collection("Meals").document(getCurrentUser().getUid());
+    }
+    static DocumentReference getCollectionReferenceForMeals(){
+
+        return FirebaseFirestore.getInstance().collection("Meals").document(getCurrentUser().getUid());
     }
 
 }
