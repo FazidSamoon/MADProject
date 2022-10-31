@@ -3,6 +3,7 @@ package com.example.madproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -12,15 +13,18 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class CreateMealPlanActivity extends AppCompatActivity {
-    BottomNavigationView bottomNavigationView;
+
     EditText BreakfastType, LunchType, DinnerType, BreakfastDescription, LunchDescription, DinnerDescription,
             Breakfastquantity, Lunchquantity, Dinnerquantity;
+    MaterialButton CreateButton;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +38,11 @@ public class CreateMealPlanActivity extends AppCompatActivity {
         Breakfastquantity = findViewById(R.id.Bf_quantity_input);
         Lunchquantity = findViewById(R.id.Lu_quantity);
         Dinnerquantity = findViewById(R.id.Din_quantity);
+
+        CreateButton = findViewById(R.id.createPlan_button);
+
+        CreateButton.setOnClickListener((v) -> createMealPlan());
+
 
     }
 
@@ -64,13 +73,13 @@ public class CreateMealPlanActivity extends AppCompatActivity {
 
     }
     void saveMealToFirebase(Meal meal) {
-        DocumentReference documentReference = Utilities.CollectionReferenceForMeals().document();
+        DocumentReference documentReference = Utilities.getCollectionReferenceForMeals();
         documentReference.set(meal).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(CreateMealPlanActivity.this, "Meal Plan Created Successfully", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(CreateMealPlanActivity.this, ViewMealPlanActivity.class);
+                    Intent intent = new Intent(CreateMealPlanActivity.this, NutrientMainActivity.class);
                     startActivity(intent);
                     finish();
                 } else {

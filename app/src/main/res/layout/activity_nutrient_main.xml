@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".NutrientMainActivity"
+    android:backgroundTint="@color/grey_tint"
+    android:backgroundTintMode="add"
     android:background="@drawable/meal">
 
     <TextView
@@ -239,7 +241,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/my_food_plan"
+        android:id="@+id/edit_plan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/create_plan"
