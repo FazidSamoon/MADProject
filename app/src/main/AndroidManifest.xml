@@ -16,6 +16,27 @@
         android:theme="@style/Theme.MADProject"
         tools:targetApi="31">
         <activity
+            android:name=".DisplayWorkoutActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".EditWorkoutActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".CreateWorkoutActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ViewMealPlanActivity"
             android:exported="false">
             <meta-data

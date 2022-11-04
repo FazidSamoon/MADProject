@@ -317,7 +317,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/progressBarWorkout"
-                        android:text="5 glasses consumed"
+                        android:text="5 pounds lost"
                         android:textAlignment="center"
                         android:textColor="@color/white" />
                 </RelativeLayout>
