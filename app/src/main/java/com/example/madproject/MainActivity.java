@@ -47,6 +47,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        workout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), CreateWorkoutActivity.class));
+            }
+        });
+
+
+
 //        sleep.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
